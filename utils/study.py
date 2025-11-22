@@ -6,7 +6,7 @@ from gtts import gTTS
 import os
 from utils import *
 import numpy as np
-from sphero_activities import *
+from utils.sphero_activities import *
 import random
 import asyncio
 
