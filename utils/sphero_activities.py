@@ -4,7 +4,7 @@ from spherov2.sphero_edu import SpheroEduAPI, EventType
 from spherov2.types import Color
 from gtts import gTTS
 import os
-from utils.utils import *
+from utils import *
 import numpy as np
 import random
 
