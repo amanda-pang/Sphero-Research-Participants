@@ -4,9 +4,9 @@ from spherov2.sphero_edu import SpheroEduAPI
 from spherov2.types import Color
 from gtts import gTTS
 import os
-from utils.utils import *
+from utils import *
 import numpy as np
-from utils.sphero_activities import *
+from sphero_activities import *
 import random
 import asyncio
 
