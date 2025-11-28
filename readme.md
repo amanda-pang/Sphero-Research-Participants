@@ -10,3 +10,7 @@ Other information:
 1. Overall design: Sphero will act as a study buddy that reminds people to take a short break every 20 minutes. It will pick an activity that could range anywhere from yoga to eye exercise. It has corresponding behaviors and prompts for each activity. 
 2. All functions related to Sphero's activity behaviors can be found in sphero_activities.py
 3. All the code related to the program's overall functionality can be found in study.py
+
+
+Website:
+https://jkloner01.github.io/HRIProject/
