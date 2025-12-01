@@ -4,7 +4,7 @@ from spherov2.sphero_edu import SpheroEduAPI, EventType
 from spherov2.types import Color
 from gtts import gTTS
 import os
-from utils import *
+from utils.utils import *
 import numpy as np
 import random
 
@@ -25,16 +25,16 @@ def yoga(droid, behavior = 'social'):
     speak("Now reach your arms up overhead and stretch toward the sky. Don't forget to breathe")
     # droid.spin(45, 0.3)
     # spin(-45, 0.3)
-    time.sleep(3)
+    time.sleep(5)
     speak("Exhale, bend forward slowly, and let your arms hang loose.")
     # roll(180, 40, 1)
-    time.sleep(4)
+    time.sleep(6)
     speak("Now step back into a gentle plank pose.")
     # roll(0, 60, 1.5)
-    time.sleep(4)
+    time.sleep(8)
     speak("Lower your knees and press into child's pose. Breathe deeply.")
     # set_main_led("blue")
-    time.sleep(5)
+    time.sleep(8)
     speak("When you're ready, slowly roll up to a seated position.")
 
     if behavior == 'social':
@@ -49,11 +49,11 @@ def yoga(droid, behavior = 'social'):
         speak("Now, let's do a short mindfulness exercise.")
         time.sleep(0.5)
         speak("Close your eyes and take me in your hands. Take a long breath in.")
-        time.sleep(1)
+        time.sleep(4)
         speak("Take a long breath out")
-        time.sleep(1)
+        time.sleep(4)
         speak("As you relax, you can roll me around with your hands! Feel my weight and the texture of my shell. Am I heavy or light? Am I soft or hard?")
-        time.sleep(2)
+        time.sleep(5)
         for _ in range(4):
                 droid.set_heading(30)
                 droid.set_heading(-30)
@@ -67,7 +67,7 @@ def yoga(droid, behavior = 'social'):
         for _ in range(3):
             speak("Breathe in deep")
             time.sleep(3)
-            speak("Breathe out. Feel my weight.")
+            speak("Breathe out.")
             time.sleep(3)
         speak("Great job!  I hope you feel the peace and joy from this fun little exercise!")
 
@@ -156,6 +156,7 @@ def stretch(droid, behavior = 'social'):
         for _ in range(15):
             droid.roll(np.random.randint(-180, 180), 180, 2.5)
         speak("wow that was quite workout! I feel refreshed! Do you?")
+        droid.set_main_led(Color(r=0, g=0, b=0))
 
 # function for eye exercise
 def eyes(droid, behavior = 'social'):
@@ -179,17 +180,20 @@ def eyes(droid, behavior = 'social'):
 
         x,y,z= 0,0,0
         threshold = 50
-        for _ in range(150):
+        max_threshold = 300
+        for _ in range(100):
             gyro = droid.get_gyroscope()
             if gyro is not None:
                 # print(gyro)
                 if abs(gyro['z'] - z) > threshold and abs(gyro['x'] - x)> threshold and abs(gyro['y'] - y)> threshold:
-                    speak("Weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+                    if random.randint(1,6) <= 3:
+                        speak("Weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
                     droid.set_main_led(get_random_color())
-                    if random.randint(1,6) <= 2:
+                    if abs(gyro['z'] - z) > max_threshold and abs(gyro['x'] - x)> max_threshold and abs(gyro['y'] - y)> max_threshold:
                         speak("Careful don't drop me!")
                 x,y,z = gyro['x'],gyro['y'],gyro['z']
             time.sleep(0.2)
+        droid.set_main_led(Color(r=0, g=0, b=0))
 
 # this functio is for testing individual activity functions
 def individual_testing():
