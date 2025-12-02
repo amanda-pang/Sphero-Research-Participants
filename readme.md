@@ -1,7 +1,6 @@
 Tips on operating the Sphero study buddy:
 
     1. Activate your virtual environment: source sphero/bin/activate
-
     
     2. To run Sphero social behavior study break: python 1_social.py
     
